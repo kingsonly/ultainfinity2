@@ -15,10 +15,19 @@
 
 $router->group(["prefix" => "api"],function() use($router){
     $router->group(["prefix" => "v1"],function() use($router){
-        $router->post('setwebhook', "MessangerController@setWebhook");
+        $router->post('setwebhook',[
+            'middleware' => 'user',
+            'uses' => "MessangerController@setWebhook"
+        ] );
         $router->post('webhook', "MessangerController@webhook");
-        $router->post('sendmessage/{id}', "MessangerController@sendMessage");
-        $router->post('subscription/{id}/{status}', "MessangerController@subscriptionStatus");
+        $router->post('sendmessage/{id}',[
+            'middleware' => 'user',
+            'uses' => "MessangerController@sendMessage"
+        ] );
+        $router->post('subscription/{id}/{status}', [
+            'middleware' => 'user',
+            'uses' => 'MessangerController@subscriptionStatus'
+        ]);
     });
 });
 
