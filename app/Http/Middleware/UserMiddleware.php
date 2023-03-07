@@ -7,7 +7,7 @@ use Closure;
 class UserMiddleware
 {
     /**
-     * Run the request filter.
+     * ensure that user id is passed in the header .
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \Closure  $next
