@@ -28,6 +28,7 @@ $router->group(["prefix" => "api"], function () use ($router) {
             'middleware' => 'user',
             'uses' => 'TelegramController@subscriptionStatus',
         ]);
+
         // route for twitter messages
         $router->post('setwebhook', [
             'middleware' => 'user',
