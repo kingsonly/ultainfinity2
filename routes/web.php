@@ -15,16 +15,16 @@
 
 $router->group(["prefix" => "api"], function () use ($router) {
     $router->group(["prefix" => "v1"], function () use ($router) {
-        $router->post('setwebhook', [
+        $router->post('telegram/setwebhook', [
             'middleware' => 'user',
             'uses' => "TelegramController@setWebhook",
         ]);
-        $router->post('webhook', "TelegramController@webhook");
-        $router->post('sendmessage/{id}', [
+        $router->post('telegram/webhook', "TelegramController@webhook");
+        $router->post('telegram/sendmessage/{id}', [
             'middleware' => 'user',
             'uses' => "TelegramController@sendMessage",
         ]);
-        $router->post('subscription/{id}/{status}', [
+        $router->post('telegram/subscription/{id}/{status}', [
             'middleware' => 'user',
             'uses' => 'TelegramController@subscriptionStatus',
         ]);
