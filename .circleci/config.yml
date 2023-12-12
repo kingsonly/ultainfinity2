@@ -23,7 +23,7 @@ jobs:
 
       - run:
           name: Install dependencies
-          command:  CI=false composer clear-cache && CI=false  composer install &&  CI=false php artisan key:generate
+          command:  CI=false composer update && CI=false  composer install 
 
       - run: sudo apt update
       - run: sudo apt-get install rsync
