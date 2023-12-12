@@ -40,11 +40,11 @@ jobs:
       - run:
           name: ssh login  
           command: |
-             rsync --delete -va -e 'ssh -p 7822 -o StrictHostKeyChecking=no'   app database phpunit.xml storage vendor artisan .env tests bootstrap composer.json resources composer.lock routes config package.json public/ skillz@185.160.67.60:ulterinfinity
+             rsync --delete -va -e 'ssh -p 7822 -o StrictHostKeyChecking=no'   app database phpunit.xml storage artisan .env tests bootstrap composer.json resources composer.lock routes config package.json public/ skillz@185.160.67.60:ulterinfinity
       - run:
           name: ssh and effect migration  
           command: |
-             ssh -p 7822 -t skillz@185.160.67.60 "cd ulterinfinity && php artisan migrate"
+             ssh -p 7822 -t skillz@185.160.67.60 "cd ulterinfinity && php artisan migrate && composer install"
             
             
 workflows:
