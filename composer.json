@@ -6,7 +6,8 @@
     "type": "project",
     "require": {
         "php": "^7.3|^8.0",
-        "darkaonline/swagger-lume": "8.*",
+        "atymic/twitter": "^1.1",
+        "darkaonline/l5-swagger": "^2.1",
         "irazasyed/larasupport": "^1.7",
         "irazasyed/telegram-bot-sdk": "^3.0",
         "laravel/lumen-framework": "^10.0"

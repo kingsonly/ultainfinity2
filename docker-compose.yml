@@ -1,7 +1,6 @@
-version: '3.2'
+version: "3.2"
 
 services:
-
   ultainfinitytest:
     build:
       context: .
@@ -11,12 +10,10 @@ services:
     command: php -S 0.0.0.0:8000 public/index.php
     volumes:
       # Re-use local composer cache via host-volume
-       - .:/var/www/html
-       - /var/www/html/vendor/
+      - .:/var/www/html
+      - /var/www/html/vendor/
     networks:
-      - ultain
-
-      
+      - ultain2
 
   mysql:
     image: mariadb:10.5.8
@@ -26,7 +23,7 @@ services:
       - MYSQL_USER=forge
       - MYSQL_PASSWORD=Ubuxa##99
     networks:
-      - ultain
+      - ultain2
 
   phpmyadmin:
     image: phpmyadmin:latest
@@ -37,13 +34,13 @@ services:
       - PMA_PASSWORD=Ubuxa##99
     restart: unless-stopped
     volumes:
-    # Re-use local composer cache via host-volume
-    - ~/.composer-docker/cache:/root/.composer/cache:delegated
-    # Mount source-code for development
-    - ./:/app
+      # Re-use local composer cache via host-volume
+      - ~/.composer-docker/cache:/root/.composer/cache:delegated
+      # Mount source-code for development
+      - ./:/app
     networks:
-      - ultain
-  
+      - ultain2
+
 networks:
-  ultain:
+  ultain2:
     driver: bridge
